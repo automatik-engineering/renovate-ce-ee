@@ -28,7 +28,7 @@ postgresql:
 renovateServer:
   image:
     repository: ghcr.io/mend/renovate-ee-server
-    version: 8.3.1@sha256:e353ca05f0146986b927b8c4298a766f77a55d1a88250ce95dde82b9fac60153
+    version: 9.2.0@sha256:de5edb224525faeefc837645488ee8d4507dbc5fc14adb1cfe9a7d8205e09ab1
     pullPolicy: Always
 
   # Number of renovate-ee-server (for SQLite only 1 replica is allowed)
@@ -64,7 +64,7 @@ renovateServer:
   mendRnvBitbucketPat:
 
   # Optional: The URL of the Renovate Server plus '/webhook' suffix.
-  # Must be accessible to receive incoming calls from the BitBucket server.
+  # Must be accessible to receive incoming calls from BitBucket Data Center.
   mendRnvWebhookURL:
 
   # Optional: A token used for searching/adding/removing repository webhooks.
@@ -183,7 +183,7 @@ renovateServer:
   containerSecurityContext:
     allowPrivilegeEscalation: false
     runAsNonRoot: true
-    runAsUser: 1000
+    runAsUser: 12021
     readOnlyRootFilesystem: false
     capabilities:
       drop:
@@ -238,7 +238,7 @@ renovateServer:
 renovateWorker:
   image:
     repository: ghcr.io/mend/renovate-ee-worker
-    version: 8.3.1-full@sha256:e5a572fe087eebf650c15304282830c76bdbf82a47f2cebad37264d4da8faeda
+    version: 9.2.0-full@sha256:a3f8797b5d4c2b47d62384ea3d65afbdc1782203dad1bffe08eb3309e104b1eb
     pullPolicy: Always
 
   # Optional: Sets the maximum execution duration of a Renovate CLI scan in minutes. Defaults to 60.
@@ -339,7 +339,7 @@ renovateWorker:
   containerSecurityContext:
     allowPrivilegeEscalation: false
     runAsNonRoot: true
-    runAsUser: 1000
+    runAsUser: 12021
     readOnlyRootFilesystem: false
     capabilities:
       drop:
